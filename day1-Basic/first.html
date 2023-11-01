@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{message}} - {{message2}} - {{num}} 
+      {{test()}}
+      <hr />
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        setup() {
+          //re() 반응형 데이터로 변환 ref로 선언된 값이 바뀌면 해당값을 사용하는 화면도 업데이트가 됨
+          const message = ref("hello");
+          const message2 = "hello";
+          const num = ref(100);
+
+          function test() {
+            console.log("welcom..." + message.value, num.value);
+          }
+          return {
+            message,
+            message2,
+            num,
+            test,
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

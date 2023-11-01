@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!--
+    scope : 변수를 사용할 수 있는 범위
+    1.함수레벨 스코프(var)
+    :함수 내에서 선언된 변수는 함수 내에서만 유효하며 지역변수로 인식됨
+    함수 밖 변수는 모두 전역 변수로 간주됨
+    2.블럭 레벨 스코프(let, const)
+    : 모든 코드 블록(함수, if문, for문, while문, try/catch문 등의 {}) 내에서 선언된 변수는
+    그 블럭 안에서만 유효함
+-->
+  <body>
+    <script>
+      //1.var
+      var num = 100;
+      var num = 200; //재선언 가능, 값 재할당 가능
+      console.log(num); //200
+
+      var x = 99;
+      if (x > 50) {
+        x = 55;
+      }
+      console.log(x); //55
+
+      var y = 100;
+      function go() {
+        var y = 300;
+        console.log(y); //300
+      }
+      go();
+      console.log(y); //100
+
+      //2.let 재선언 x, 값 재할당 o
+      let no = 123;
+      no = 987;
+
+      let greet = "welcome";
+      let times = 4;
+      if (times > 3) {
+        let greet = "hello.js";
+        let hello = "hello,tom";
+        console.log(greet); //hello.js
+      }
+      console.log(greet); //welcome
+      //   console.log(hello);//error
+
+      //3.const : 재선언x, 값 재할당x
+      const flag = true;
+      //flag = false; //error
+      console.log(flag);
+
+      //const 배열이나 객체의 경우 객체 속성이나 배열 요소값은 변경이 가능함.
+      const nums = [1, 2, 3];
+      nums.push(10);
+      nums.push(20);
+      nums.push(30);
+      console.log(nums);
+
+      const user = {
+        num: 123,
+        name: "harry potter",
+        age: 12,
+      };
+      user.name = "ron";
+      console.log(user.name);
+
+      //4. scope check
+      var i = 10;
+      for (var i = 0; i < 5; i++) {
+        console.log(i);
+      }
+      console.log("i=", i); //5
+
+      var j = 55;
+      for (let j = 0; j < 5; j++) {
+        console.log(j);
+      }
+      console.log("j=", j); //55
+
+      var funcs = [];
+      for (var i = 0; i < 3; i++) {
+        funcs.push(function () {
+          console.log(i);
+        });
+      }
+
+      for (var j = 0; j < 3; j++) {
+        funcs[j]();
+      }
+    </script>
+  </body>
+</html>

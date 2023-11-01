@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.선언적 함수(함수이름이 있는 경우)
+      function f1(a, b) {
+        console.log(a + b);
+      }
+      f1(2, 3);
+
+      //2.익명함수
+      const f2 = function (a, b) {
+        console.log(a * b);
+      };
+      f2(2, 6);
+
+      //3.화살표 함수
+      const f3 = (a, b) => console.log(a + b);
+      f3(4, 5);
+    </script>
+  </body>
+</html>

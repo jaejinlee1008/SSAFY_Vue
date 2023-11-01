@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!--Consise Method : 객체안의 메소드 정의 시 간단하게 표시하는 방법-->
+  <body>
+    <script>
+      const user = {
+        num: 123,
+        name: "tommy lee",
+        info: function () {
+          console.log(this.num, this.name);
+        },
+      };
+      user.num = 345;
+      console.log(user);
+      user.info();
+
+      var user2 = {
+        num: 987,
+        name: "billy joel",
+        info() {
+          //간결하게 작성 가능
+          console.log(this.num, this.name);
+        },
+      };
+      user2.info();
+    </script>
+  </body>
+</html>

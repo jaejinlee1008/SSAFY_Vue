@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!--
+    Property Shorthand : 단축 속성명
+    json작성 시 key와 value 부분의 이름이 동일할 때 한번만 적는 방식
+-->
+  <body>
+    <script>
+      const id = 123;
+      const name = "이인석";
+      const age = 25;
+
+      const user = {
+        id: id,
+        name: name,
+        age: age,
+      };
+
+      const user2 = {
+        id,
+        name,
+        age,
+      };
+      console.log(user);
+      console.log(user2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!-- 
+    Destructuring Assignment : 비구조화 할당
+    배열이나 객체가 가지고 있는 값을 개별적인 여러개의 변수에 할당하는 간편한 방식
+-->
+  <body>
+    <script>
+      const colors = ["red", "pink", "green", "blue", "black"];
+      const c0 = colors[0];
+      const c1 = colors[1];
+      const c2 = colors[2];
+      const c3 = colors[3];
+      const c4 = colors[4];
+      console.log(c0, c1, c2, c3, c4);
+
+      const [a0, a1, a2, a3, a4] = colors; //변수 5개를 설정해주는것과 동일
+      console.log(a0, a1, a2, a3, a4);
+
+      const user = {
+        id: "magician",
+        name: "harry potter",
+        age: 12,
+      };
+      {
+        let id = user.id;
+        let name = user.name;
+        let age = user.age;
+
+        console.log(id, name, age);
+      }
+      {
+        const { id, name, age } = user;
+        console.log(id, name, age);
+
+        let { id: ssafyid, name: ssafyname, age: ssafyage } = user;
+        console.log(ssafyid, ssafyname, ssafyage);
+      }
+    </script>
+  </body>
+</html>

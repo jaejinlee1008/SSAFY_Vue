@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!--Spread Syntax : 전개구문(객체나 배열의 내용을 가져와서 사용하는 방법)-->
+  <body>
+    <script>
+      const user1 = { id: "ssafy1", name: "kim" };
+      const user2 = { id: "ssafy2", name: "kim" };
+      const array = [user1, user2];
+
+      //1. array copy
+      const copyarray = [...array];
+      console.log(1, array, copyarray);
+      user1.name = "xyz";
+      console.log(2, array, copyarray); //배열 둘 다 바뀜
+
+      //2.array append
+      const addarray = [...array, { id: "ssafy3", name: "han" }];
+      console.log(3, addarray);
+
+      //3.object copy
+      const user3 = { ...user1 };
+      console.log(user3);
+
+      //4.array concat
+      const team1 = ["red", "blue"];
+      const team2 = ["white", "yellow"];
+      const team3 = [...team1, ...team2];
+
+      //5.object merge
+      const user4 = { id1: "id1", tel: !23 };
+      const user5 = { id2: "id2", tel: 999 };
+      const user6 = { ...user4, ...user5 };
+    </script>
+  </body>
+</html>

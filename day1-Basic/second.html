@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      num:{{num}}<br>
+      <button @click="up">number up!!!</button>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        setup() {
+          const num = ref(123);
+          const up = function () {
+            num.value = num.value+1;
+          }
+          return {
+            num,
+            up
+          }
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

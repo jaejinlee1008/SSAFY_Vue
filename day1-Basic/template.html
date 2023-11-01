@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!--화면-->
+
+    <!--Vue 객체(vm) 생성해서 작업
+        createApp() : vue 객체 생성해주는 함수
+    -->
+    <script>
+      const { createApp, ref } = Vue;
+      const vm = createApp({
+        setup() {
+          //1.변수,상수 선언
+          //2.함수 선언
+          //3.setup함수 밖(화면)에서 사용할 값 return
+          //4.화면에 mount
+        },
+      });
+
+      vm.mount("#app");
+    </script>
+  </body>
+</html>
