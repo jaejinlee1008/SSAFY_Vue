@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vuejs</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    #myid{
+        color : magenta;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{msg}}</p>
+    <div v-once>once : {{msg}}</div>
+    <div v-html = "rawHtml"></div>
+    <div v-text = "rawHtml"></div>
+    <div v-bind:id="dynamicId">안녕하세요</div> <!--속성값 부여 가능-->
+    {{ number + 1 }}<br>
+    {{ ok ? 'YES' : 'NO' }}<br>
+    {{ msg.split('').reverse().join('') }}<br>
+    <div :id="`list-${id}`">야호</div>
+    <div>내가 만든 함수 호출 : {{test()}}</div>
+    <div v-if="ok">if 내가 보이나요</div>
+    <div v-show="ok">show 내가 보이나요</div>
+</div>
+<script>
+    const {createApp, ref} = Vue;
+    const app = createApp({
+        setup(){
+            const msg = ref('hello')
+            const rawHtml = ref('<span style="color:red">this should be red</span>')
+            const dynamicId = ref('myid')
+            const number = ref(10)
+            const ok = ref(true)
+            const id = ref(1)
+            const test = ()=>"안녕 난 뷰야";
+            return {
+                msg,
+                rawHtml,
+                dynamicId,
+                number,
+                id,
+                ok,
+                test
+            }
+        }
+    });
+
+    app.mount("#app");
+
+</script>
+</body>
+
+</html>

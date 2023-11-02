@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <p>count : {{count}}</p>
+        <p>count : {{colors}}</p>
+        <p>count : {{user.num}}-{{user.name}}</p>
+        <button @click="gogo">gogo</button>
+    </div>
+    <!--화면-->
+
+    <!--Vue 객체(vm) 생성해서 작업
+        createApp() : vue 객체 생성해주는 함수
+    -->
+    <script>
+        //reactive : 반응형 데이터를 만들어준다(객체,함수)
+      const {createApp, ref, reactive} = Vue;
+      const app = createApp({
+        setup() {
+            const count = ref(0)
+            const colors = ref([])
+            const user = reactive({
+                num:123,
+                name:'tommy'
+            })
+            function gogo(){
+                // console.log(count.value);
+                console.log(user.num);
+            }
+            return{
+                count,colors,user,gogo
+            }
+        }
+      }).mount('#app')
+    </script>
+  </body>
+</html>

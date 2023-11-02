@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>calculator</h1>
+            <form class="form-inline" action="" @submit.prevent="calc()">
+                <input class="form-control" v-model.number="a"/>
+                <select class="form-control" v-model="operator">
+                    <option>+</option>
+                    <option>-</option>
+                    <option>*</option>
+                    <option>/</option>
+                </select>
+                <input  class="form-control" v-model.number="b"/>
+                <button class="btn btn-primary" type="submit">
+                    calculate
+                </button>
+            </form>
+            <div>{{a}}{{operator}}{{b}}</div>
+            <h2>result:{{result}}</h2> 
+
+        </div>
+    </div>
+    <script>
+        const {createApp, ref,reactive} = Vue;
+        const app = createApp({
+            setup() {
+                const a = ref()
+                const b = ref()
+                const operator = ref('')
+                const result = ref()
+                function calc() {
+                    
+                    if(operator.value=='+'){
+                        result.value= a.value+b.value;
+                    }else if(operator.value=='*'){
+                        result.value= a.value*b.value;
+                    }else if(operator.value=='-'){
+                        result.value= a.value-b.value;
+                    }else if(operator.value=='/'){
+                        result.value= a.value/b.value;
+                    }
+                }
+                return {
+                    a,b,operator,calc,result
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <!--
+    directive:html 태그 안에서 v-로 시작하는 모든 속성들.
+              화면 요소를 좀 더 쉽게 조작하기 위한 목적
+              v-if, v-html, v-for, v-show....
+  -->
+  <body>
+    <div id="app">
+      <div>
+        <h1 v-pre>{{그대로 출력해 주세요}}</h1>
+        <h1 v-pre>{{msg}}</h1>
+        <h1>{{msg}}</h1>
+      </div>
+      <hr>
+      <div v-html = "msg"></div>
+      <div v-text="msg"></div>
+      <hr>
+      <a href="#" v-if="flag1">gogo</a>
+      <a href="#" v-if="flag2">stop</a>
+      <p v-show="flag2">run</p>
+
+      <div v-if="type=='A'">A</div>
+      <div v-else-if="type=='B'">B</div>
+      <div v-else-if="type=='C'">C</div>
+      <div v-else>Nothing</div>
+
+      <hr>
+      <ul>
+        <li v-for="system in systems">
+          {{system}}
+        </li>
+      </ul>
+      <hr>
+      <!-- v-bind:원래 태그가 가지고 있는 속성의 값으로 뷰객체의 데이터와 연결 시킬 때 사용(단방향 연결) -->
+      <h3 :id="uid">this is h3</h3>
+      <h3 v-bind:id="uid">this is another h3</h3>
+      <img :src="src" alt="image">
+      <hr>
+      <!--v-on:이벤트 등록시키는 핸들러-->
+      <button v-on:click="hello">hello</button>
+      <button @click="hello">hello</button>
+    </div>
+    <script>
+      const { createApp, ref } = Vue;
+      const vm = createApp({
+        setup() {
+          const msg = "<h2>welcome</h2>"
+          const flag1 = ref(true)
+          const flag2 = ref(false)
+          const systems = ['android','ios','windows']
+          const uid = ref('a123')
+          const src = ref('./img/blueBlouse.jpg')
+          const type = ref('B')
+          function hello(){
+            alert('qweqwe')
+          }
+          return{
+            msg,flag1,flag2,systems,uid,src,hello,type
+          }
+        },
+      });
+
+      vm.mount("#app");
+    </script>
+  </body>
+</html>

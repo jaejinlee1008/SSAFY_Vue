@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <!-- v-model:화면과 데이터를 양방향으로 연결시켜주는 지시어 -->
+  <body>
+    <div id="app">
+        <input type="text" v-model="name">
+        이름:{{name}}
+        <hr>
+        바나나:<input type="checkbox" v-model="fruits" value="banana">
+        오렌지:<input type="checkbox" v-model="fruits" value="orange">
+        사과:<input type="checkbox" v-model="fruits" value="apple">
+        선택된 과일 : {{fruits}}
+        <hr>
+        dream car : {{selected}}<br>
+        <select name="car" id="car" v-model="selected">
+            <option value="avante" selected>avante</option>
+            <option value="sm5" >sm5</option>
+            <option value="morning" >morning</option>
+        </select>
+    </div>
+    <script>
+      const { createApp, ref } = Vue;
+      const vm = createApp({
+        setup() {
+            const name = ref('harry kim')
+            const fruits = ref([])
+            const selected = ref('')
+            return{
+                name,fruits,selected
+            }
+        },
+      });
+
+      vm.mount("#app");
+    </script>
+  </body>
+</html>
