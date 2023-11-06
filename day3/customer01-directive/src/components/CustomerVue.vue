@@ -51,7 +51,7 @@
 
     function customerDelete(){
         customers.value = customers.value.filter((item)=>item.num!=num.value);
-        localStorage.setItem("customerlist",customers);
+        localStorage.setItem("customerlist",JSON.stringify(customers));
         clearText();
     }
 </script>
