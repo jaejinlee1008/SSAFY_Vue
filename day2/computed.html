@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <p>책의 권 수</p>
+        {{booksCount}}
+        {{booksCount}}
+        {{booksCount}}
+        <hr>
+        <button @click="booksCount2()">method</button>
+        {{booksCount2()}}
+        {{booksCount2()}}
+        {{booksCount2()}}
+    </div>
+    <script>
+      const { createApp, ref, computed } = Vue;
+      const vm = createApp({
+        setup() {
+            const books = ref([
+                'harry potter', 'who moved my cheese?', 'tempest'
+            ])
+
+            const booksCount = computed(()=>{
+                console.log("books computed...");
+                return books.value.length;
+            });
+
+            function booksCount2(){
+                console.log('books method...');
+                return books.value.length;
+            }
+
+            return{
+                books,booksCount,booksCount2
+            }
+        },
+      });
+
+      vm.mount("#app");
+    </script>
+  </body>
+</html>

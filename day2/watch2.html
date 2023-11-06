@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        x:<input type="number" v-model.number="x"/>
+        y:<input type="number" v-model.number="y"/>
+        <button @click="++obj.count">count</button>
+    </div>
+    <script>
+      const { createApp, ref, watch, reactive } = Vue;
+      const vm = createApp({
+        setup() {
+            const x = ref(0)
+            const y = ref(0)
+            const obj = reactive({count:0})
+
+            const student = reactive({
+              score : {val:0}
+
+            })
+
+            watch(
+              ()=> student.score,
+              ()=>{
+                console.log('hello');
+              },
+              {deep:true}
+            )
+
+            //1. 단일 값
+            // watch(x,(newVal, oldVal)=>{
+            //   console.log(`x값 : ${oldVal} => ${newVal}`);
+            // })
+
+            //2.여러개의 값
+            // watch([x,y],([newX,newY],[oldX,oldY])=>{
+            //   console.log(`x값 : ${oldX}=>${newX}`);
+            //   console.log(`y값 : ${oldY}=>${newY}`);
+            // })
+
+            //3.getter
+            // watch(
+            //   ()=>x.value+y.value,
+            //   (sum)=>{
+            //     console.log(`x+y=${sum}`);
+            //   }
+            // )
+            
+            //4. not called
+            // watch(obj.count,(count)=>{
+            //   console.log(`count값 : ${count}`);
+            // })
+
+            //5. ok -getter로 수정
+            // watch(()=>obj.count,
+            //   (count)=>{
+            //   console.log(`count값 : ${count}`);
+            // })
+
+            return{
+                x,y,obj,student
+            }
+        },
+
+      });
+
+      vm.mount("#app");
+    </script>
+  </body>
+</html>

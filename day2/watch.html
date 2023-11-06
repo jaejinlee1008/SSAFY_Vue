@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <input type="text" v-model="msg"/>
+        {{msg}}
+    </div>
+    <script>
+      const { createApp, ref, watch } = Vue;
+      const vm = createApp({
+        setup() {
+            const msg = ref('super man')
+            watch(msg,(newVal,oldVal)=>{
+                console.log(`변경된 내용 : ${oldVal} => ${newVal}`);
+            })
+
+            return{
+                msg
+            }
+        },
+
+      });
+
+      vm.mount("#app");
+    </script>
+  </body>
+</html>

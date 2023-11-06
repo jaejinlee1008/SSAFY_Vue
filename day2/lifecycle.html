@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        {{message}}
+    </div>
+    <script>
+      const { createApp, ref, onMounted, onUpdated } = Vue;
+      const vm = createApp({
+        setup() {
+
+            const message=ref('hello')
+
+            //Vue instance가 화면에 마운트 된 뒤에 자동 호출
+            onMounted(()=>{
+                console.log('mounted');
+            })
+
+            //화면 내용이 업데이트 된 후 자동 호출
+            onUpdated(()=>{
+                console.log('updated');
+            })
+
+            return{
+                message,
+            }
+        },
+      });
+
+      vm.mount("#app");
+    </script>
+  </body>
+</html>
