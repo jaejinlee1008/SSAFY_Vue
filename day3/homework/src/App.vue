@@ -1,22 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import CustomerVue from './components/CustomerVue1.vue'
-import { ref } from 'vue'
-const code = ref('hello, props...')
+import BoardList from "./components/BoardList.vue";
+import BoardModify from "./components/BoardModify.vue";
+import BoardView from "./components/BoardView.vue";
+import BoardWrite from "./components/BoardWrite.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="Hello" :code="code" />
-    </div>
-  </header>
-
-  <main>
-    <CustomerVue></CustomerVue>
-  </main>
+  <BoardList></BoardList>
+  <BoardModify></BoardModify>
+  <BoardView></BoardView>
+  <BoardWrite></BoardWrite>
 </template>
 
 <style scoped>

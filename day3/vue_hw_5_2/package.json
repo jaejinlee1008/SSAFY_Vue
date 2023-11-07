@@ -1,9 +1,9 @@
 {
-  "name": "customer01-directive",
+  "name": "vue_hw_5_2",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --host localhost --open --port 9800",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },

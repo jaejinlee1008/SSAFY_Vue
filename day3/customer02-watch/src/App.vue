@@ -1,25 +1,22 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import CustomerVue from './components/CustomerVue1.vue'
-import { ref } from 'vue'
-const code = ref('hello, props...')
+import CustomerTop from './components/CustomerTop.vue'
+import CustomerList from './components/CustomerList.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="Hello" :code="code" />
-    </div>
+    <CustomerTop></CustomerTop>
+    <CustomerList>
+      <h4>Customer List</h4>
+    </CustomerList>
   </header>
-
-  <main>
-    <CustomerVue></CustomerVue>
-  </main>
 </template>
 
 <style scoped>
+h4 {
+  color: red;
+}
+
 header {
   line-height: 1.5;
 }

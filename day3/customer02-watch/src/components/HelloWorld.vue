@@ -1,18 +1,20 @@
 <script setup>
-//태그안에 사용되는 속성을 정의
-// defineProps({
-//   msg: {
-//     type: String,
-//     required: true
-//   }
-// })
-defineProps(['msg', 'code'])
+defineProps({
+  msg: {
+    type: String,
+    required: true
+  }
+})
 </script>
 
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
-    <h1 class="green">{{ code }}</h1>
+    <h3>
+      You’ve successfully created a project with
+      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
+      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
+    </h3>
   </div>
 </template>
 
@@ -34,7 +36,6 @@ h3 {
 }
 
 @media (min-width: 1024px) {
-
   .greetings h1,
   .greetings h3 {
     text-align: left;
