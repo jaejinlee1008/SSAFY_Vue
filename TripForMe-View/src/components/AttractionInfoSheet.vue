@@ -1,0 +1,85 @@
+<script setup>
+
+const props = defineProps({ isShow: Boolean, selectAttraction: Object });
+const emits = defineEmits(["addCourse", "close"]);
+
+function close() {
+    emits("close");
+}
+
+function addCourse() {
+    emits("addCourse");
+}
+
+</script>
+
+<template>
+    <v-sheet 
+        height="75%" width="45%" 
+        class="sheet text-center justify-center rounded-lg" 
+        :class="{ info : props.isShow }"
+        elevation=8
+    >
+        <h2 class="mt-4">
+            {{ props.selectAttraction?.title }}
+        </h2>
+
+        <h4 class="my-2">
+            {{ props.selectAttraction.addr1 }}
+        </h4>
+
+        <v-img 
+            :src="props.selectAttraction.firstImage 
+                    ? props.selectAttraction.firstImage 
+                    : `/assets/images/no_image.jpg`"
+            width="75%" height="30%"
+            class="mx-12"
+        ></v-img>
+
+        <v-card 
+            class="mt-2 mx-4 text-start overflow-auto" 
+            height="40%"
+            elevation="0"
+        >
+            {{ props.selectAttraction.overview }}
+        </v-card>
+
+        <v-container class="text-end">
+            <v-btn
+                class="text-none mr-2"
+                color="success"
+                rounded
+                variant="flat"
+                width="90"
+                @click="addCourse"
+            >
+                추가하기
+            </v-btn>
+
+            <v-btn
+                class="text-none"
+                color="red-darken-1"
+                rounded
+                variant="flat"
+                width="90"
+                @click="close"
+            >
+                닫기
+            </v-btn>
+        </v-container>
+    </v-sheet>
+</template>
+
+<style scoped>
+
+.sheet {
+  position: absolute;
+  left: 2%;
+  bottom: 3%;
+}
+
+.info {
+  z-index: 100;
+}
+
+</style>
