@@ -1,6 +1,6 @@
 <script setup>
 
-const props = defineProps({ isShow: Boolean, selectAttraction: Object });
+const props = defineProps({ isShow: Boolean, selectAttraction: Object, isInsert: Boolean });
 const emits = defineEmits(["addCourse", "close"]);
 
 function close() {
@@ -15,9 +15,9 @@ function addCourse() {
 
 <template>
     <v-sheet 
-        height="75%" width="45%" 
+        
         class="sheet text-center justify-center rounded-lg" 
-        :class="{ info : props.isShow }"
+        :class="[{ info : props.isShow }, props.isInsert ? 'write' : 'read']"
         elevation=8
     >
         <h2 class="mt-4">
@@ -46,6 +46,7 @@ function addCourse() {
 
         <v-container class="text-end">
             <v-btn
+                v-if="isInsert"
                 class="text-none mr-2"
                 color="success"
                 rounded
@@ -72,10 +73,20 @@ function addCourse() {
 
 <style scoped>
 
-.sheet {
+.sheet{
   position: absolute;
   left: 2%;
   bottom: 3%;
+}
+
+.read {
+    height: 90%;
+    width: 40%;
+}
+
+.write {
+    height: 75%;
+    width: 45%;
 }
 
 .info {

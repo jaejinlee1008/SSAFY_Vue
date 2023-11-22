@@ -20,4 +20,33 @@ async function AllThemes(id, success, fail) {
 async function themesFindByKeyword(keyword, success, fail) {
   await local.get(`/themes/search/${keyword}`).then(success).catch(fail);
 }
-export { insertTheme, getThemeById, delThemeById, top10Themes, AllThemes, themesFindByKeyword };
+
+async function getTheme(id, success, fail) {
+  await local.get(`/theme/${id}`).then(success).catch(fail);
+}
+
+async function getAttractions(id, success, fail) {
+  await local.get(`/theme/${id}/attractions`).then(success).catch(fail);
+}
+
+async function getLikeCnt(id, success, fail) {
+  await local.get(`/theme/${id}/like`).then(success).catch(fail);
+}
+
+async function updateLike(body, success, fail) {
+  await local.post(`/theme/like`, body).then(success).catch(fail);
+}
+
+
+export { 
+  insertTheme, 
+  getThemeById, 
+  delThemeById, 
+  top10Themes, 
+  AllThemes, 
+  themesFindByKeyword, 
+  getTheme, 
+  getAttractions,
+  getLikeCnt,
+  updateLike 
+};

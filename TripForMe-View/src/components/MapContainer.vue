@@ -10,7 +10,7 @@ import { useThemeStore } from "../stores/theme";
 import { storeToRefs } from "pinia";
 const themeStore = useThemeStore();
 
-const { sido, gugun, course } = storeToRefs(themeStore);
+const { sido, gugun, course, courseinfo } = storeToRefs(themeStore);
 
 const emits = defineEmits(["updateCourse"]);
 
@@ -145,6 +145,7 @@ const addCourse = () => {
     if (!course.value.find((element) =>
         element.contentId === selectAttraction.value.contentId)) {
         course.value.push(selectAttraction.value);
+        courseinfo.value.push(selectAttraction.value);
         // emits("updateCourse", course.value);
     }
     close();
@@ -195,10 +196,16 @@ const removeAttraction = (index) => {
                             v-on:keyup.enter="search"></v-text-field>
                     </v-container>
 
-                    <VKakaoMap class="rounded-lg" :attractions="attractions" :selectAttraction="selectAttraction"
+                    <VKakaoMap class="rounded-lg" 
+                        :attractions="attractions" 
+                        :selectAttraction="selectAttraction"
+                        :isInsert="true"
                         @set-attraction="setAttraction">
 
-                        <AttractionInfoSheet :isShow="isSheetShow" :selectAttraction="selectAttraction"
+                        <AttractionInfoSheet 
+                            :isShow="isSheetShow" 
+                            :selectAttraction="selectAttraction"
+                            :isInsert="true"
                             @add-course="addCourse" @close="close"></AttractionInfoSheet>
 
                     </VKakaoMap>

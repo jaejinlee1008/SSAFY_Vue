@@ -1,0 +1,68 @@
+<script setup>
+
+    const props = defineProps(["theme"]);
+
+</script>
+
+<template>
+    <v-container>
+        <v-card>
+            <v-container>
+                테마 소개
+            </v-container>
+
+            <v-container>
+
+                <v-row>
+                    <v-col>
+                        <v-card height="75">
+                            <h2 class="pa-4">{{ props.theme.title }}</h2>
+                        </v-card>
+                    </v-col>
+                </v-row>
+
+                <v-row>
+                    <v-col>
+                        <v-card class="h-auto" style="min-height: 200px !important;">
+                            <p class="pa-2">
+                                {{ props.theme.description }}
+                            </p>
+                        </v-card>
+                    </v-col>
+                </v-row>
+
+                <v-row>
+                    <v-col>
+                        <v-card height="50">
+                            <p>{{ props.theme.recomandCompanion }}</p>
+                        </v-card>
+                    </v-col>
+                </v-row>
+
+                <v-row>
+                    <v-col>
+                        <v-card height="50">
+                            <p>{{ props.theme.expectedPeriod }}</p>
+                        </v-card>
+                    </v-col>
+
+                    <v-col>
+                        <v-card height="50">
+                            <p>{{ props.theme.budget }}</p>
+                        </v-card>
+                    </v-col>
+                    
+                </v-row>
+
+            </v-container>
+        </v-card>
+
+    </v-container>
+</template>
+
+<style scoped>
+.sign {
+    font-family: "Maplestory-Bold";
+    font-size: 20px;
+}
+</style>

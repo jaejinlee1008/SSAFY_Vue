@@ -4,7 +4,12 @@ import { httpStatusCode } from "@/util/http-status";
 import {
     getThemeById, delThemeById, top10Themes, AllThemes, themesFindByKeyword
 } from "@/api/theme";
+import { storeToRefs } from "pinia";
+import { useUserStore } from "@/stores/user";
+
 export const useThemeStore = defineStore('theme', () => {
+    const userStore = useUserStore();
+    const { userInfo } = storeToRefs(userStore);
     const GPTDialog = ref(false)
     const myThemes = ref([]);
     const gptreply = ref('');
@@ -15,6 +20,7 @@ export const useThemeStore = defineStore('theme', () => {
     const sido = ref({});
     const gugun = ref({});
     const course = ref([]);
+    const courseinfo = ref([]);
     const title = ref("");
     const description = ref("");
     const companion = ref("");
@@ -122,6 +128,7 @@ export const useThemeStore = defineStore('theme', () => {
         sido,
         gugun,
         course,
+        courseinfo,
         title,
         description,
         companion,

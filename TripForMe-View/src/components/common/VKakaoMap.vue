@@ -5,7 +5,7 @@ var map;
 const positions = ref([]);
 const markers = ref([]);
 
-const props = defineProps({ attractions: Array, selectAttraction: Object });
+const props = defineProps({ attractions: Array, selectAttraction: Object, isInsert: Boolean });
 const emits = defineEmits(["setAttraction"]);
 
 watch(
@@ -98,13 +98,18 @@ function clickMarker(attraction) {
 <template>
   <span>
     <slot></slot>
-    <v-container id="map">
+    <v-container id="map" v-bind:class="[ props.isInsert ? 'write' : 'read']">
     </v-container>
   </span>
 </template>
 
 <style>
-#map {
+.read {
+  width: 100%;
+  height: 100%;
+}
+
+.write {
   width: 97%;
   height: 78%;
 }

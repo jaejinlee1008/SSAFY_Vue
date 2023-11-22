@@ -14,7 +14,7 @@ import { storeToRefs } from "pinia";
 const store = useUserStore();
 const themeStore = useThemeStore();
 const { userInfo, tab } = storeToRefs(store);
-const { course } = storeToRefs(themeStore);
+const { course, courseinfo, title, description, companion, period, budget } = storeToRefs(themeStore);
 
 // const course = ref([]);
 const router = useRouter();
@@ -39,6 +39,13 @@ const submit = (form) => {
         data,
         () => {
             tab.value = 1;
+            title.value = "";
+            description.value = "";
+            companion.value = "";
+            period.value = "";
+            budget.value = "";
+            course.value = [];
+            courseinfo.value = [];
             router.push("/list");
         },
         (err) => { console.log(err) }
