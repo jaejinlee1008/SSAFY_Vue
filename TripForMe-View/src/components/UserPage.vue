@@ -3,11 +3,13 @@ import { ref, onMounted } from 'vue';
 import { storeToRefs } from "pinia";
 import { useUserStore } from "@/stores/user";
 import { useThemeStore } from "@/stores/theme";
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const userStore = useUserStore();
 const themeStore = useThemeStore();
 
-const { userInfo } = storeToRefs(userStore);
+const { userInfo, tab } = storeToRefs(userStore);
 const { myThemes } = storeToRefs(themeStore);
 const { userUpdatePwd, userUpdate, userSignOut, } = userStore;
 const { getUserTheme, themeDelete } = themeStore;
@@ -73,6 +75,7 @@ const updateUser = async () => {
 
 const signOut = async () => {
     await userSignOut(userInfo.value.userId);
+    router.push("/");
 }
 
 const selected = ref([]);
@@ -95,6 +98,11 @@ const deleteTheme = async () => {
     await selected.value.forEach(item => {
         themeDelete(item.id);
     });
+}
+
+const godetail = (id) => {
+    tab.value = -1;
+    router.push(`/detail/${id}`);
 }
 
 </script>
@@ -146,6 +154,7 @@ const deleteTheme = async () => {
                                             현재 사용중인 비밀번호를 입력해주세요.
                                         </span>
                                     </v-card-text>
+
                                 </v-window-item>
 
                                 <v-window-item :value="2">
@@ -167,6 +176,9 @@ const deleteTheme = async () => {
                                 <v-spacer></v-spacer>
                                 <v-btn v-if="step == 1 && pwflag" color="primary" variant="flat" @click="step++">
                                     Next
+                                </v-btn>
+                                <v-btn v-if="step == 1" color="primary" @click="dialog = false">
+                                    취소
                                 </v-btn>
                                 <v-btn v-if="step == 2 && newPwflag" color="primary" variant="flat" @click="changePwd">
                                     수정
@@ -202,7 +214,13 @@ const deleteTheme = async () => {
         </v-btn>
     </div>
     <v-data-table v-model="selected" :headers="headers" :items="myThemes" items-per-page="5" item-value="id" return-object
-        show-select></v-data-table>
+        show-select>
+        <template v-slot:item.title="{ item }">
+            <div>
+                <v-btn variant="text" @click="godetail(item.id)">{{ item.title }}</v-btn>
+            </div>
+        </template>
+    </v-data-table>
 </template>
 
 <style scoped>

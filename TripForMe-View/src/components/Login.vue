@@ -24,9 +24,11 @@ const login = async () => {
     let token = sessionStorage.getItem("accessToken");
     console.log("111. ", token);
     console.log("isLogin: ", isLogin);
-    if (isLogin) {
+    if (isLogin.value) {
         console.log("로그인 성공아닌가???");
         getUserInfo(token);
+    } else {
+        alert('일치하는 회원이 없습니다.');
     }
     router.push("/");
 };

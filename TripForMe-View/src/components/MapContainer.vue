@@ -170,7 +170,7 @@ const removeAttraction = (index) => {
                 <v-card height="800">
 
                     <v-container>
-                        <v-container class="d-flex pa-0">
+                        <v-container class="d-flex pa-0 region">
                             <v-col>
                                 <v-select :items="sidoList" item-title="text" item-value="value" density="comfortable"
                                     variant="outlined" label="시/도" class="px-2" :width="200" v-model="sido"
@@ -192,6 +192,7 @@ const removeAttraction = (index) => {
                         </v-container>
 
                         <v-text-field density="compact" variant="outlined" label="검색하기..." append-inner-icon="mdi-magnify"
+                            class="region"
                             single-line hide-details v-model="keyword" @click:append-inner="search"
                             v-on:keyup.enter="search"></v-text-field>
                     </v-container>
@@ -222,7 +223,7 @@ const removeAttraction = (index) => {
                                 <v-card height="80" class="mb-5 my-3 elevation-4">
                                     <v-row class="py-4">
                                         <v-col @click="setAttraction(item)">
-                                            <h3 class="pa-3">{{ item.title }}</h3>
+                                            <h3 class="pa-3 attraction">{{ item.title }}</h3>
                                         </v-col>
 
                                         <v-col cols="2">
@@ -245,5 +246,13 @@ const removeAttraction = (index) => {
 .course {
     font-family: "Maplestory-Bold";
     font-size: 25px;
+}
+
+.attraction {
+    font-family: "Maplestory-Bold";
+}
+
+.region {
+    font-family: "Maplestory-Light";
 }
 </style>

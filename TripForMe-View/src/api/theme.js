@@ -37,6 +37,10 @@ async function updateLike(body, success, fail) {
   await local.post(`/theme/like`, body).then(success).catch(fail);
 }
 
+async function updateTheme(body, success, fail) {
+  await local.put(`/theme`, body).then(success).catch(fail);
+}
+
 
 export { 
   insertTheme, 
@@ -48,5 +52,6 @@ export {
   getTheme, 
   getAttractions,
   getLikeCnt,
-  updateLike 
+  updateLike,
+  updateTheme
 };

@@ -51,9 +51,11 @@ const move = (id) => {
                                     <v-img v-if="item.raw.representImg" :src="item.raw.representImg" height="200px"
                                         cover></v-img>
                                     <v-img v-else src="/assets/images/seoul.jpg" height="200px" cover></v-img>
+                                    <hr>
                                     <v-list-item class="mb-2">
                                         <template v-slot:title>
-                                            <strong class="text-h6 mb-2">{{ item.raw.title }}</strong>
+                                            <div class="d-flex justify-center mt-3 strong">{{
+                                                item.raw.title }}</div>
                                         </template>
                                     </v-list-item>
                                     <v-overlay :model-value="isHovering" contained scrim="#080808"
@@ -88,6 +90,11 @@ const move = (id) => {
 </template>
 
 <style scoped>
+.strong {
+    font-family: "JalnanGothic";
+    font-size: 23px;
+}
+
 .like {
     color: white;
     font-family: "Maplestory-Bold";

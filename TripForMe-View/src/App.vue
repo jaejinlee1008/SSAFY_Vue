@@ -31,6 +31,16 @@ import TripForMeHeader from './components/TripForMeHeader.vue';
 }
 
 @font-face {
+  font-family: 'TAEBAEK-milkyway';
+  src: url('/assets/fonts/TAEBAEK-milkyway.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NPSfont_bold';
+  src: url('/assets/fonts/NPSfont_bold.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'WandohopeR';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeR.woff') format('woff');
   font-weight: normal;

@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue';
 import { storeToRefs } from "pinia";
 import { useUserStore } from "@/stores/user";
-import AITheme from "./AITheme.vue";
 const userStore = useUserStore();
 
 const { users } = storeToRefs(userStore);
@@ -44,10 +43,9 @@ const deleteUser = () => {
             회원삭제
         </v-btn>
     </div>
-    <v-data-table v-model="selected" :headers="headers" :items="users" items-per-page="5" item-value="userId" return-object
+    <v-data-table v-model="selected" :headers="headers" :items="users" items-per-page="10" item-value="userId" return-object
         show-select></v-data-table>
     <hr>
-    <AITheme></AITheme>
 </template>
 
 <style scoped>

@@ -8,8 +8,7 @@ import { storeToRefs } from "pinia";
 import { useUserStore } from "@/stores/user";
 
 export const useThemeStore = defineStore('theme', () => {
-    const userStore = useUserStore();
-    const { userInfo } = storeToRefs(userStore);
+
     const GPTDialog = ref(false)
     const myThemes = ref([]);
     const gptreply = ref('');
@@ -27,6 +26,7 @@ export const useThemeStore = defineStore('theme', () => {
     const period = ref("");
     const budget = ref("");
     const getUserTheme = (userId) => {
+
         getThemeById(
             userId,
             (response) => {
@@ -46,10 +46,13 @@ export const useThemeStore = defineStore('theme', () => {
     };
 
     const themeDelete = (id) => {
+
         delThemeById(
             id,
             (response) => {
                 if (response.status === 204) {
+                    const userStore = useUserStore();
+                    const { userInfo } = storeToRefs(userStore);
                     getUserTheme(userInfo.value.userId);
                     console.log('테마 삭제 성공');
                 } else {

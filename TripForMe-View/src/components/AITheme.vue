@@ -31,18 +31,18 @@ const callgpt = async () => {
         AI에게 테마 물어보기
     </v-btn>
     <!-- <br>
-        {{ gptreply }}
-        <hr>
-        {{ gptTheme["테마제목"] }}<br>
-        {{ gptTheme["테마설명"] }}<br>
-        {{ gptTheme["추천 여행 동반자"] }}<br>
-        {{ gptTheme["예상 여행 기간"] }} -->
+                            {{ gptreply }}
+                            <hr>
+                            {{ gptTheme["테마제목"] }}<br>
+                            {{ gptTheme["테마설명"] }}<br>
+                            {{ gptTheme["추천 여행 동반자"] }}<br>
+                            {{ gptTheme["예상 여행 기간"] }} -->
     <v-dialog v-model="GPTDialog" persistent width="768">
         <v-card>
             <v-card-text>
                 <v-container>
-                    <img src="/assets/images/Searching.gif" />
-                    <div>AI의 답변을 기다리는 중....</div>
+                    <div class="d-flex justify-center"><img src="/assets/images/Searching.gif" /></div>
+                    <div class="d-flex justify-center">AI의 답변을 기다리는 중....</div>
                 </v-container>
             </v-card-text>
             <v-card-actions>

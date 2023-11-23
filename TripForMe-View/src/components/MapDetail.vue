@@ -65,7 +65,7 @@
 
                                     <v-row class="py-4">
                                         <v-col @click="setAttraction(item)">
-                                            <h3 class="pa-3">{{ item.title }}</h3>
+                                            <h3 class="pa-3 attraction">{{ item.title }}</h3>
                                         </v-col>
 
                                     </v-row>
@@ -81,5 +81,14 @@
 </template>
 
 <style scoped>
+
+.course {
+    font-family: "Maplestory-Bold";
+    font-size: 25px;
+}
+
+.attraction {
+    font-family: "Maplestory-Bold";
+}
 
 </style>

@@ -20,11 +20,11 @@ function addCourse() {
         :class="[{ info : props.isShow }, props.isInsert ? 'write' : 'read']"
         elevation=8
     >
-        <h2 class="mt-4">
+        <h2 class="mt-4 title">
             {{ props.selectAttraction?.title }}
         </h2>
 
-        <h4 class="my-2">
+        <h4 class="my-2 title">
             {{ props.selectAttraction.addr1 }}
         </h4>
 
@@ -47,7 +47,7 @@ function addCourse() {
         <v-container class="text-end">
             <v-btn
                 v-if="isInsert"
-                class="text-none mr-2"
+                class="text-none mr-2 btn"
                 color="success"
                 rounded
                 variant="flat"
@@ -58,7 +58,7 @@ function addCourse() {
             </v-btn>
 
             <v-btn
-                class="text-none"
+                class="text-none btn"
                 color="red-darken-1"
                 rounded
                 variant="flat"
@@ -91,6 +91,14 @@ function addCourse() {
 
 .info {
   z-index: 100;
+}
+
+.title {
+    font-family: "TAEBAEK-milkyway";
+}
+
+.btn {
+    font-family: "NPSfont_bold";
 }
 
 </style>

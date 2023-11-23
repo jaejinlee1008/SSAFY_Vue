@@ -2,7 +2,8 @@ import { ref } from 'vue'
 import { useRouter } from "vue-router";
 import { defineStore } from 'pinia'
 import { jwtDecode } from "jwt-decode";
-
+import { useThemeStore } from "@/stores/theme";
+import { storeToRefs } from "pinia";
 import {
     userConfirm, findById, tokenRegeneration, logout, idDupCheck, signUp,
     updatePwd, updateUser, deleteUser, AllUser, deleteUsers
@@ -10,6 +11,8 @@ import {
 import { httpStatusCode } from "@/util/http-status";
 
 export const useUserStore = defineStore('user', () => {
+    const themeStore = useThemeStore();
+    const { course, title, description, companion, period, budget } = storeToRefs(themeStore);
     const router = useRouter();
     const tab = ref(null)
     const loginDialog = ref(false)
@@ -80,6 +83,13 @@ export const useUserStore = defineStore('user', () => {
                 if (response.status === httpStatusCode.OK) {
                     userInfo.value = response.data.userInfo;
                     console.log("3. getUserInfo data >> ", response.data);
+                    course.value = [];
+                    title.value = '';
+                    description.value = '';
+                    companion.value = '';
+                    period.value = '';
+                    budget.value = '';
+                    tab.value = 0;
                 } else {
                     console.log("유저 정보 없음!!!!");
                 }
@@ -148,6 +158,7 @@ export const useUserStore = defineStore('user', () => {
                     userInfo.value = null;
                     isValidToken.value = false;
                     loginDialog.value = false;
+                    tab.value = 0;
                 } else {
                     console.error("유저 정보 없음!!!!");
                 }
@@ -243,6 +254,10 @@ export const useUserStore = defineStore('user', () => {
             (response) => {
                 if (response.data.message == 'success') {
                     console.log('회원탈퇴 성공');
+                    isLogin.value = false;
+                    userInfo.value = null;
+                    tab.value = 0;
+                    loginDialog.value = false;
                 } else {
                     console.log('회원탈퇴 실패');
                 }

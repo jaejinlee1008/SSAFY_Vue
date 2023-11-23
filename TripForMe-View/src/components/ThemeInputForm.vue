@@ -14,7 +14,7 @@ const emits = defineEmits(["submit"]);
 const submit = async () => {
     let img = '';
     console.log('info : ', courseinfo.value);
-    courseinfo.value.forEach(item => {
+    course.value.forEach(item => {
         if (item.firstImage != "") {
             img = item.firstImage;
             return false;
@@ -35,21 +35,25 @@ const submit = async () => {
 <template>
     <v-container>
         <v-card>
-            <v-container>
+            <v-container class="title">
                 당신의 테마는 어떤 테마인가요?
             </v-container>
 
             <v-container>
                 <v-form @submit.prevent="onSubmit">
-                    <v-text-field v-model="title" :rules="[required]" class="mb-2" clearable label="테마 제목"></v-text-field>
+                    <v-text-field variant="outlined" v-model="title" class="mb-2 textfield" clearable
+                        label="테마 제목"></v-text-field>
 
-                    <v-textarea label="테마 설명" v-model="description"></v-textarea>
+                    <v-textarea variant="outlined" label="테마 설명" class="textfield" v-model="description"></v-textarea>
 
-                    <v-text-field v-model="companion" :rules="[required]" clearable label="누구랑 같이 가면 좋은가요?"></v-text-field>
+                    <v-text-field variant="outlined" v-model="companion" class="textfield" clearable
+                        label="누구랑 같이 가면 좋은가요?"></v-text-field>
 
-                    <v-text-field v-model="period" :rules="[required]" clearable label="얼마나 걸릴 것 같나요?"></v-text-field>
+                    <v-text-field variant="outlined" v-model="period" class="textfield" clearable
+                        label="얼마나 걸릴 것 같나요?"></v-text-field>
 
-                    <v-text-field v-model="budget" :rules="[required]" clearable label="예산은 어느 정도인가요?"></v-text-field>
+                    <v-text-field variant="outlined" v-model="budget" class="textfield" clearable
+                        label="예산은 어느 정도인가요?"></v-text-field>
 
                 </v-form>
 
@@ -72,4 +76,12 @@ const submit = async () => {
     font-family: "Maplestory-Bold";
     font-size: 20px;
 }
-</style>
+
+.title {
+    font-family: "Maplestory-Bold";
+    font-size: 25px;
+}
+
+.textfield {
+    font-family: "Maplestory-Bold";
+}</style>
